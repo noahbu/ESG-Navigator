@@ -1,10 +1,11 @@
 import streamlit as st
+import pandas as pd
 import numpy as np
 
-
+st.title('ESG Manager View')
 
 # Create a text input field
-user_input = st.text_input("")
+user_input = st.text_input("please enter here")
 
 # Display the input value
 st.write("You entered:", user_input)
@@ -27,3 +28,4 @@ if uploaded_file is not None:
     st.write("File uploaded:", uploaded_file.name)
     pdf_contents = uploaded_file.read()
     st.write("PDF contents:", pdf_contents)
+
