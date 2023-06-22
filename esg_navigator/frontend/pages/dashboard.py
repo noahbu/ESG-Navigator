@@ -3,23 +3,27 @@ import pandas as pd
 import numpy as np
 import streamlit_authenticator as stauth
 
-"""authenticator = stauth.Authenticate(
-    config['credentials'],
-    config['cookie']['name'],
-    config['cookie']['key'],
-    config['cookie']['expiry_days'],
-    config['preauthorized']
-    )
+# authenticator = stauth.Authenticate(
+#     config['credentials'],
+#     config['cookie']['name'],
+#     config['cookie']['key'],
+#     config['cookie']['expiry_days'],
+#     config['preauthorized']
+#     )
 
-if st.session_state["authentication_status"]:
+# if st.session_state["authentication_status"]:
     
-    st.success("Logged in as: {}!".format(st.session_state["name"]))
-    #st.info("You can now access the app.")
-    authenticator.logout("Logout", "sidebar")
-    st.sidebar.title("Ucomply - Your Social Copilot")
-    st.sidebar.write("Welcome {}!".format(st.session_state["username"]))"""
+#     st.success("Logged in as: {}!".format(st.session_state["name"]))
+#     #st.info("You can now access the app.")
+#     authenticator.logout("Logout", "sidebar")
+#     st.sidebar.title("Ucomply - Your Social Copilot")
+#     st.sidebar.write("Welcome {}!".format(st.session_state["username"]))
 
 st.title('ESG Manager View')
+
+st.write(f"Welcome {st.session_state['username']}!")
+st.write(f"Logged in as: {st.session_state['name']}!")
+st.session_state["authenticator"].logout("Logout", "sidebar")
 
 # Create a text input field
 user_input = st.text_input("please enter here")

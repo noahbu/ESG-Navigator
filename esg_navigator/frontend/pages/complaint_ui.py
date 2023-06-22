@@ -1,8 +1,34 @@
 import streamlit as st
 import numpy as np
 import secrets
+import pandas as pd
+from datetime import datetime
+import os
+from PyPDF2 import PdfFileReader, PdfWriter
 
 
+
+# Get the root directory of the project (the location of the script)
+
+
+def save_form():
+    print("Saving form...")
+    parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    file_path = os.path.join(parent_directory, 'data', 'complaints_db.csv')
+    st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
+    #SAVE_PDF
+    pdf_path = os.path.join(parent_directory, 'data','pdfs', str(id)+'.pdf')
+    with open(pdf_path, 'wb') as out:
+        out.write(pdf_contents)
+
+    new_row = {'Timestamp':datetime.now(), 'ID':id, 'Anonymity': selected_option, 'Email': email, 'Issue': user_text, 'Evidence': pdf_path, 'Status': 'Open'}
+    
+    # Append the row        
+    st.session_state.complaints_db = pd.concat([st.session_state.complaints_db, pd.DataFrame([new_row])], ignore_index=True)
+
+    st.session_state.complaints_db.to_csv(file_path,sep= ";", index=False)
+
+    st.success("Successfully submitted your request - A colleague is going to take care of it")
 
 
 st.title('Filing a Complaint')
@@ -17,9 +43,11 @@ In case you have concern wether this is the right way to communicate your concer
          
 # Create a question with a dropdown menu
 selected_option = st.selectbox("Select a contact option", ["Anonymous", "Email"])
+email = None
+pdf_contents = None
+id = secrets.token_hex(8)  # Generates 16-character long hexadecimal
 
 if selected_option == "Anonymous":
-    id = secrets.token_hex(8)  # Generates 16-character long hexadecimal
     st.write(f"Process ID: {id}")
 
 if selected_option == "Email":
@@ -49,6 +77,21 @@ if uploaded_file is not None:
     st.write("File uploaded:", uploaded_file.name)
     pdf_contents = uploaded_file.read()
     st.write("PDF contents:", pdf_contents)
+    
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    if st.button("Submit"):
+        save_form(pdf_contents)
+
+
+
+
+
+
+
+
 
 
 
