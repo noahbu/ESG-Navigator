@@ -15,8 +15,8 @@
 /*    */
 /*    */
     .sidebar .sidebar-content {
-        background-color: #000000;
-        color: #FFFFFF;
+        background-color: #155D59;
+        color: #FFCB43;
     }
     .sidebar .sidebar-content li {
         font-size: 18px;
@@ -27,6 +27,7 @@
     height: 1000px;
     position: relative;
 }
+
 
 .map-frame {
     width: 100%;
