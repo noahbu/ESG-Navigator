@@ -32,14 +32,17 @@ authenticator = stauth.Authenticate(
     config['preauthorized']
 )
 name, authentication_status, username = authenticator.login('Login', 'main')
-st.write(f"Welcome {st.session_state.authentication_status}!")
-
-st.session_state["name"] = name
-st.session_state["authentication_status"] = authentication_status
-st.session_state["username"] = username
-st.session_state["authenticator"] = authenticator
 
 st.write(f"Welcome {st.session_state.authentication_status}!")
+
+if 'user' not in st.session_state:
+    st.session_state['user'] = name
+if 'username' not in st.session_state:
+    st.session_state['username'] = username
+if 'authentication_status' not in st.session_state:
+    st.session_state['authentication_state'] = authentication_status
+if 'authenticator' not in st.session_state:
+    st.session_state['authenticator'] = authenticator
 
 
 if st.session_state["authentication_status"]:

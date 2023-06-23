@@ -11,7 +11,7 @@ from PyPDF2 import PdfFileReader, PdfWriter
 # Get the root directory of the project (the location of the script)
 
 
-def save_form():
+def save_form(pdf_contents):
     print("Saving form...")
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     file_path = os.path.join(parent_directory, 'data', 'complaints_db.csv')
@@ -76,7 +76,7 @@ if uploaded_file is not None:
     # For example, you can save it or read its contents
     st.write("File uploaded:", uploaded_file.name)
     pdf_contents = uploaded_file.read()
-    st.write("PDF contents:", pdf_contents)
+    #st.write("PDF contents:", pdf_contents)
     
 
 col1, col2, col3 = st.columns(3)
