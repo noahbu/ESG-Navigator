@@ -1,0 +1,11 @@
+Timestamp;ID;Anonymity;Email;Issue;Evidence;Status
+2023-06-22 16:51:50.950254;696e72e21ae5b466;Email;1234.0;"12346
+23
+4
+";;Open
+2023-06-22 16:57:36.741273;573539b919709987;Anonymous;;213;;Open
+2023-06-22 16:59:14.316433;8e8c6f9a871dfe56;Anonymous;;1234;;Open
+2023-06-22 16:59:31.042526;1429511c82ed98cd;Email;12345.0;Test email;;Open
+2023-06-22 17:01:11.754018;1337add293ad6b4e;Anonymous;;test-3;;Open
+2023-06-22 17:01:16.726001;cb27fe06077f7050;Anonymous;;"test-4
+";;Open

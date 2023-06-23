@@ -1,7 +1,0 @@
-pyproject.toml
-UComply.egg-info/PKG-INFO
-UComply.egg-info/SOURCES.txt
-UComply.egg-info/dependency_links.txt
-UComply.egg-info/top_level.txt
-esg_navigator/helper.py
-esg_navigator/main.py
