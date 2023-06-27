@@ -9,3 +9,6 @@ Timestamp;ID;Anonymity;Email;Issue;Evidence;Status
 2023-06-22 17:01:11.754018;1337add293ad6b4e;Anonymous;;test-3;;Open
 2023-06-22 17:01:16.726001;cb27fe06077f7050;Anonymous;;"test-4
 ";;Open
+2023-06-23 09:33:22.148000;90e1cfecd833feb0;Anonymous;;12345;/Users/magic-rabbit/Documents/TechChallenge_UnternhemerTUM/ESG-Navigator/esg_navigator/data/pdfs/90e1cfecd833feb0.pdf;Open
+2023-06-23 09:38:52.139902;a32e2b88bcf1cfd2;Anonymous;;12345;/Users/magic-rabbit/Documents/TechChallenge_UnternhemerTUM/ESG-Navigator/esg_navigator/data/pdfs/a32e2b88bcf1cfd2.pdf;Open
+2023-06-27 15:14:09.142720;6855e5720dd5c7c7;Anonymous;;12345;/Users/magic-rabbit/Documents/TechChallenge_UnternhemerTUM/ESG-Navigator/esg_navigator/data/pdfs/6855e5720dd5c7c7.pdf;Open
