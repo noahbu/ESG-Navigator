@@ -7,7 +7,9 @@ import os
 from streamlit_option_menu import option_menu
 import yaml
 from yaml.loader import SafeLoader 
-from esg_navigator.backend.helper import load_css,session_states_init
+from esg_navigator.backend.helper import load_css,session_states_init, load_complaints_db,load_manager_data
+from streamlit_chat import message
+
 
 st.set_page_config(
     page_title=" Welcome to Ucomply - Your Social Copilot",
@@ -36,13 +38,28 @@ if 'authenticator' not in st.session_state:
     st.session_state['authenticator'] = authenticator
 
 if st.session_state["authentication_status"]:
+    load_manager_data()
+
     st.title("UComply Dashboard")
+    st.write("View your open cases")
+    st.dataframe(st.session_state['manager_db'])
     #st.info("You can now access the app.")
     with st.sidebar:
         st.session_state['authenticator'].logout("Logout", "sidebar")
-
         st.sidebar.title("Ucomply - Your Social Copilot")
         st.sidebar.write(f"Welcome {st.session_state['username']}!")
+    
+
+    st.write(f"Chat functionality")
+
+    
+    message("My message") 
+    message("Hello bot!", is_user=True)
+
+
+
+
+    
 
 
     # selected3 = option_menu(None, ["Dashboard", "Complaints",  "Report", 'Settings'], 

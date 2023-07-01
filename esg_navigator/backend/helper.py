@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import pandas as pd
 def load_css():
 
     """file_path = os.path.join(os.path.dirname(__file__), "../styles.css")
@@ -16,10 +17,7 @@ def load_css():
         return f.read()
     
 
-def load_manager_data():
-    parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    file_path = os.path.join(parent_directory, 'data', 'complaints_db.csv')
-    st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
+
 
 
 
@@ -33,3 +31,21 @@ def session_states_init():
         st.session_state['authentication_state'] = False
     if 'current_page' not in st.session_state:
         st.session_state['current_page'] = "Home"
+
+
+@st.cache_data
+def load_complaints_db():
+
+    parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    file_path = os.path.join(parent_directory, 'data', 'complaints_db.csv')
+    st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
+
+
+@st.cache_data
+def load_manager_data():
+    parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    file_path = os.path.join(parent_directory,"esg_navigator/data", "manager_db.csv")
+    db = pd.read_csv(file_path,sep= ";")
+    sliced_db = db[db['assigned_responsible'] == st.session_state['name']]
+    st.session_state['manager_db'] = sliced_db
+
