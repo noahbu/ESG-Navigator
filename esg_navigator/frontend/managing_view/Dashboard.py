@@ -7,7 +7,7 @@ import os
 from streamlit_option_menu import option_menu
 import yaml
 from yaml.loader import SafeLoader 
-from esg_navigator.backend.helper import app_init,load_css, load_complaints_db,load_manager_data
+from esg_navigator.backend.helper import app_init,load_css, load_complaints_db
 import datetime
 import plost
 from PIL import Image
@@ -29,11 +29,9 @@ app_init()
 
 if st.session_state["authentication_status"]:
 
-    load_manager_data()
-
     st.title("UComply Dashboard")
-    st.write("View your open cases")
-    st.dataframe(st.session_state['manager_db'])
+
+    
     st.session_state['authenticator'].logout("Logout", "sidebar")
     #st.info("You can now access the app.")
     with st.sidebar:
