@@ -1,10 +1,14 @@
 import streamlit as st
+from esg_navigator.backend.helper import add_logo
+
 
 st.set_page_config(
-    page_title="landing_page",
+    page_title="Info-Section",
     page_icon="👋",
     layout="wide"
 )
+add_logo()  
+
 
 def load_assets():
     # Load CSS

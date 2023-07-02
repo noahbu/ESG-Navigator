@@ -5,6 +5,8 @@ import pandas as pd
 from datetime import datetime
 import os
 from PyPDF2 import PdfFileReader, PdfWriter
+from esg_navigator.backend.helper import add_logo
+
 
 
 
@@ -14,6 +16,7 @@ st.set_page_config(
     page_icon="👋",
     layout="wide"
 )
+add_logo()
 
 
 def save_form(pdf_contents):
