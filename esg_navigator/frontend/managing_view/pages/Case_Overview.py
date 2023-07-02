@@ -49,9 +49,7 @@ if st.session_state["authentication_status"]:
     st.divider()
     st.header(f"Complainee Interaction")
     case_id = db.loc[db['name'] == case, 'ID'].values[0]
-    load_chat_history(case_id)
-
-    st.write(st.session_state.chat_history)
+    load_chat_history(case_id)    
     
     chat_placeholder = st.empty()
 
@@ -67,9 +65,7 @@ if st.session_state["authentication_status"]:
             on_input_change(case_id, is_officer = True)
 
 
-          # align's the message to the right
-
-
+          # align's the message to the righ
 
 
 

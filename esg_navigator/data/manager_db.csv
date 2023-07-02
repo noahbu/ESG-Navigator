@@ -1,14 +1,51 @@
-Timestamp;ID;Anonymity;Email;Issue;Evidence;Status;assigned_responsible;New_message
-2023-06-22 16:51:50.950254;696e72e21ae5b466;Email;1234.0;"12346
+Timestamp;name;ID;Anonymity;Email;Issue;Evidence;Status;assigned_responsible;New_message
+2023-06-22 16:51:50.950254;sheepishOatmeal6;696e72e21ae5b466;Email;1234.0;"12346
 23
 4
 ";;Open;Admin;
-2023-06-22 16:57:36.741273;573539b919709987;Anonymous;;213;;Open;Admin;
-2023-06-22 16:59:14.316433;8e8c6f9a871dfe56;Anonymous;;1234;;Open;Admin;
-2023-06-22 16:59:31.042526;1429511c82ed98cd;Email;12345.0;Test email;;Open;peterparker;
-2023-06-22 17:01:11.754018;1337add293ad6b4e;Anonymous;;test-3;;Open;peterparker;
-2023-06-22 17:01:16.726001;cb27fe06077f7050;Anonymous;;"test-4
+2023-06-22 16:57:36.741273;mereBobolink;573539b919709987;Anonymous;;213;;Open;Admin;
+2023-06-22 16:59:14.316433;truthfulWildfowl;8e8c6f9a871dfe56;Anonymous;;1234;;Open;Admin;
+2023-06-22 16:59:31.042526;pitifulMandrill;1429511c82ed98cd;Email;12345.0;Test email;;Open;peterparker;
+2023-06-22 17:01:11.754018;finickyRice3;1337add293ad6b4e;Anonymous;;test-3;;Open;peterparker;
+2023-06-22 17:01:16.726001;offendedCheese3;cb27fe06077f7050;Anonymous;;"test-4
 ";;Open;peterparker;
-2023-06-23 09:33:22.148000;90e1cfecd833feb0;Anonymous;;12345;/Users/magic-rabbit/Documents/TechChallenge_UnternhemerTUM/ESG-Navigator/esg_navigator/data/pdfs/90e1cfecd833feb0.pdf;Open;peterparker;
-2023-06-23 09:38:52.139902;a32e2b88bcf1cfd2;Anonymous;;12345;/Users/magic-rabbit/Documents/TechChallenge_UnternhemerTUM/ESG-Navigator/esg_navigator/data/pdfs/a32e2b88bcf1cfd2.pdf;Open;;
-2023-06-27 15:14:09.142720;6855e5720dd5c7c7;Anonymous;;12345;/Users/magic-rabbit/Documents/TechChallenge_UnternhemerTUM/ESG-Navigator/esg_navigator/data/pdfs/6855e5720dd5c7c7.pdf;Open;;
+2023-06-23 09:33:22.148000;pitifulWild;90e1cfecd833feb0;Anonymous;;12345;/Users/magic-rabbit/Documents/TechChallenge_UnternhemerTUM/ESG-Navigator/esg_navigator/data/pdfs/90e1cfecd833feb0.pdf;Open;peterparker;
+2023-06-23 09:38:52.139902;abjectWigeon5;a32e2b88bcf1cfd2;Anonymous;;12345;/Users/magic-rabbit/Documents/TechChallenge_UnternhemerTUM/ESG-Navigator/esg_navigator/data/pdfs/a32e2b88bcf1cfd2.pdf;Open;;
+2023-06-27 15:14:09.142720;importedChile8;6855e5720dd5c7c7;Anonymous;;12345;/Users/magic-rabbit/Documents/TechChallenge_UnternhemerTUM/ESG-Navigator/esg_navigator/data/pdfs/6855e5720dd5c7c7.pdf;Open;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;

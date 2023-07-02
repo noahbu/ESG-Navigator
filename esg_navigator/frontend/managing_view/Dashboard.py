@@ -96,11 +96,6 @@ if st.session_state["authentication_status"]:
     st.line_chart(seattle_weather, x = 'date', y = plot_data, height = plot_height)
     
 
-
-
-
-   
-
     
 elif st.session_state["authentication_status"] is False:
     st.error('Username/password is incorrect')
