@@ -1,5 +1,4 @@
 timestamp;is_officer;message
-2023-07-01 19:36:41.923054;True;hallo
-2023-07-01 19:36:51.216057;True;hallo
-2023-07-01 19:36:58.962824;True;hallo2
-2023-07-01 19:37:01.609299;True;hallo2
+2023-07-01 19:36:41.923054;FALSE;Hello, I need to report a potential case of fraud.
+2023-07-01 19:36:51.216057;TRUE;Certainly, I'm here to help. Please provide me with the details of the suspected fraud so that we can address the issue appropriately.
+2023-07-01 19:36:58.962824;FALSE;Thank you. I recently came across some financial irregularities in my workplace. It seems that a coworker has been manipulating expense reports and diverting company funds for personal use.

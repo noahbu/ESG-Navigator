@@ -13,8 +13,6 @@ import plost
 from PIL import Image
 
 
-
-
 st.set_page_config(
     page_title=" Welcome to Ucomply - Your Social Copilot",
     page_icon="👋",
@@ -24,28 +22,30 @@ st.set_page_config(
 image = Image.open('../../design/logo/ucomply_Logo.png')
 st.image(image)
 
+#Variable initialization
 app_init()
 
-
+#Only display text if loggeed in:
 if st.session_state["authentication_status"]:
 
-    st.title("UComply Dashboard")
+    st.title("Integrity Intelligence Dashboard")
+    st.write("")
 
-    
+    #Display login button
     st.session_state['authenticator'].logout("Logout", "sidebar")
-    #st.info("You can now access the app.")
+
+    #cCustomize sidebar
     with st.sidebar:
         
         st.title("Ucomply - Your Social Copilot")
         st.write(f"Welcome {st.session_state['username']}!")
     
-        st.header('Dashboard `version 2`')
 
-        st.sidebar.subheader('Heat map parameter')
+        st.sidebar.subheader('TBD inserting plot by region')
         time_hist_color = st.sidebar.selectbox('Color by', ('temp_min', 'temp_max')) 
 
         st.sidebar.subheader('Donut chart parameter')
-        donut_theta = st.sidebar.selectbox('Select data', ('q2', 'q3'))
+        donut_theta = st.sidebar.selectbox('Select quarter', ('q2', 'q3'))
 
         st.sidebar.subheader('Line chart parameters')
 
@@ -54,24 +54,29 @@ if st.session_state["authentication_status"]:
 
         st.sidebar.markdown('''
         ---
-        Created with ❤️ by [Data Professor](https://youtube.com/dataprofessor/).
+        Created with ❤️ by UComply.
         ''')
 
 
-    # Row A
-    st.markdown('### Metrics')
+    #Dashboard Build: ROW 1
     col1, col2, col3 = st.columns(3)
-    col1.metric("Temperature", "70 °F", "1.2 °F")
-    col2.metric("Wind", "9 mph", "-8%")
-    col3.metric("Humidity", "86%", "4%")
+    col1.metric("New open cases", "1", "100%")
+    col2.metric("This months complaints", " 3", "33%")
+    col3.metric("Complaints Location: EMEA ", "10", "10%")
 
-    # Row B
+    #Dashboard Build: ROW 2
+    #To be altered to display the correct data
     seattle_weather = pd.read_csv('https://raw.githubusercontent.com/tvst/plost/master/data/seattle-weather.csv', parse_dates=['date'])
-    stocks = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/stocks_toy.csv')
+    cases = pd.DataFrame(dict(
+        company=['Sexual Harrasment', 'Discrimination', 'Fraud'],
+        q2 = [1, 2, 3],
+        q3 = [1, 2, 1],
+        ))
+
 
     c1, c2 = st.columns((7,3))
     with c1:
-        st.markdown('### Heatmap')
+        st.markdown('### Plot by region')
         plost.time_hist(
         data=seattle_weather,
         date='date',
@@ -83,16 +88,16 @@ if st.session_state["authentication_status"]:
         height=345,
         use_container_width=True)
     with c2:
-        st.markdown('### Donut chart')
+        st.markdown('### Reports by type')
         plost.donut_chart(
-            data=stocks,
+            data=cases,
             theta=donut_theta,
             color='company',
             legend='bottom', 
             use_container_width=True)
 
     # Row C
-    st.markdown('### Line chart')
+    st.markdown('### Insert Bar Chart')
     st.line_chart(seattle_weather, x = 'date', y = plot_data, height = plot_height)
     
 

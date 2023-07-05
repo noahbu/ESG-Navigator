@@ -9,6 +9,8 @@ import datetime
 
 
 def add_logo():
+    """Adds the Ucomply logo to the sidebar"""
+
     st.markdown(
         """
         <style>
@@ -31,12 +33,8 @@ def add_logo():
     )
 
 def load_css():
+    """Loads the CSS file"""
 
-    """file_path = os.path.join(os.path.dirname(__file__), "../styles.css")
-    with open(file_path, "r") as f:
-        css = f.read()
-    return css
-    """
     # Get the current script's directory
     dir_path = os.path.dirname(os.path.realpath(__file__))
     # Construct the full path to the CSS file
@@ -46,10 +44,15 @@ def load_css():
         return f.read()
     
 
-
-
 def app_init():
+    """Initializes the app"""
 
+
+    #Add logo to the sidebar
+    add_logo()
+
+
+    # Load the login module
     with open('../../config.yaml') as file:
         config = yaml.load(file, Loader=SafeLoader)
 
@@ -60,7 +63,7 @@ def app_init():
         config['cookie']['expiry_days'],
         config['preauthorized']
     )
-    add_logo()
+    
     if 'authenticator' not in st.session_state:
         st.session_state['authenticator'] = authenticator
 
@@ -68,9 +71,10 @@ def app_init():
     st.session_state['name'], st.session_state['authentication_state'], st.session_state['username'] = authenticator.login('Login', 'main')
 
 
-
 @st.cache_data
+
 def load_complaints_db():
+    """Loads the complaints database"""
 
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     file_path = os.path.join(parent_directory, 'data', 'complaints_db.csv')
@@ -78,9 +82,16 @@ def load_complaints_db():
 
 @st.cache_data
 def load_manager_data():
+
+    #TODO: Merge both databases
+    """Loads the manager database"""
+
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     file_path = os.path.join(parent_directory,"esg_navigator/data", "manager_db.csv")
+
+    #Read database from csv
     db = pd.read_csv(file_path,sep= ";")
+    #Filter by assigned responsible
     sliced_db = db[db['assigned_responsible'] == st.session_state['name']]
 
     if 'manager_db' not in st.session_state:
@@ -93,10 +104,17 @@ def load_manager_data():
 #Chat helper functions 
 @st.cache_data
 def load_chat_history(id):
+    """ Loads the chat history from the individualcsv file
+    Args:
+        id (int): id of the complaint
+        
+    Returns: 
+        session_state['chat_history'] (list): list of dictionaries with the chat history
+        """
 
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
     file_path = os.path.join(parent_directory,"esg_navigator/data/chats", str(id) +"_chat_history.csv")
+
     if os.path.isfile(file_path):
         db = pd.read_csv(file_path,sep= ";")
         list_dict = db.to_dict('records')
@@ -107,6 +125,13 @@ def load_chat_history(id):
     return 
 
 def on_input_change(id, is_officer):
+    """Adds the user input to the chat history
+    Args:
+        id (int): id of the complaint
+        is_officer (bool): True if the user is an officer, False if the user is a manager
+    Returns:
+        None
+    """
 
             user_input = st.session_state.user_input
             st.write(f"User input: {user_input}")
@@ -116,12 +141,20 @@ def on_input_change(id, is_officer):
                     "message": user_input
                 }
             st.session_state.chat_history.append(data)
-            message(data["message"], is_user = data["is_officer"]) 
+            #message(data["message"], is_user = data["is_officer"]) 
             chat_to_csv(str(id), st.session_state.chat_history)
 
 
-##TODO
 def chat_to_csv(id,chat_history):
+    
+    """Writes the chat history to a csv file
+    Args:
+        id (int): id of the complaint
+        chat_history (list): list of dictionaries with the chat history
+    Returns:
+        None    
+        """
+
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     file_path = os.path.join(parent_directory,"esg_navigator/data/chats", str(id) + "_chat_history.csv")
     print(file_path)

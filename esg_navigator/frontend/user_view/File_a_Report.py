@@ -26,12 +26,15 @@ def save_form(pdf_contents):
     file_path = os.path.join(parent_directory, 'data', 'complaints_db.csv')
     st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
     #SAVE_PDF
-    pdf_path = os.path.join(parent_directory, 'data','pdfs', str(id)+'.pdf')
-    with open(pdf_path, 'wb') as out:
-        out.write(pdf_contents)
+    if pdf_contents is not None:
+        pdf_path = os.path.join(parent_directory, 'data','pdfs', str(id)+'.pdf')
+        with open(pdf_path, 'wb') as out:
+            out.write(pdf_contents)
+    else:
+        pdf_path = ""
 
     new_row = {'Timestamp':datetime.now(), 
-               'ID':id, 
+               'ID':st.session_state.process_id, 
                'Urgency': select_urgency, 
                'Anonymity': selected_anonymity, 
                'Email': email, 
@@ -80,10 +83,15 @@ In case you have concern wether this is the right way to communicate your concer
 selected_anonymity = st.selectbox("Select a contact option", ["Anonymous", "Email"])
 email = None
 pdf_contents = None
-id = secrets.token_hex(8)  # Generates 16-character long hexadecimal
+uploaded_file = None
+pdf_contents = None
+
+if 'process_id' not in st.session_state:
+        st.session_state['process_id'] =  secrets.token_hex(8)  # 
+
 
 if selected_anonymity == "Anonymous":
-    st.write(f"Process ID: {id}")
+    st.write(f"Process ID: {st.session_state.process_id}")
 
 if selected_anonymity == "Email":
     email = st.text_input("Enter your email")
@@ -118,12 +126,11 @@ choose_category = st.selectbox("In which category does this case fit best?", [
 
 
 #location of the case
-location = st.text_area("Please describe where the Case takes place: at which specific team, which company is involved, in which location, etc.")
+location = st.text_area("Where did your incident happen at which specific team, which company is involved, in which location, etc.")
 
 
 #general description
-description = st.text_area("Please desccribe the Case") #text input field size is fixed to my knowledge, workaround with CSS oder Javascript exist. 
-    
+description = st.text_area("Please desribe what you bobserved") #text input field size is fixed to my knowledge, workaround with CSS oder Javascript exist. 
 
 # Create an upload field for PDF files
 uploaded_file = st.file_uploader("Upload a PDF as case fo evidence to your complaint", type="pdf")
@@ -134,21 +141,22 @@ if uploaded_file is not None:
     # For example, you can save it or read its contents
     st.write("File uploaded:", uploaded_file.name)
     pdf_contents = uploaded_file.read()
+
     #st.write("PDF contents:", pdf_contents)
+
     
 
 col1, col2, col3 = st.columns(3)
 
 
 
-with col2:
-    if st.button("Submit"):
-        save_form(pdf_contents)
-        show_submission_details(id, selected_anonymity)
-        with col3:
-            st.write("Micheal will handle you case")
-            st.image(os.path.join(parent_directory, 'backend', 'trustworthy_hr_manager.jpg'), use_column_width=True)
-            st.write("Michael Goodville is a proffesional conflict solver and will take the utmost care and sensitivity in handling your case")
+if st.button("Submit"):
+    save_form(pdf_contents)
+    show_submission_details(st.session_state.process_id, selected_anonymity)
+    with col3:
+        st.write("Micheal will handle you case")
+        st.image(os.path.join(parent_directory, 'backend', 'trustworthy_hr_manager.jpg'), use_column_width=True)
+        st.write("Michael Goodville is a proffesional conflict solver and will take the utmost care and sensitivity in handling your case")
 
 
 

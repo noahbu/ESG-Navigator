@@ -1,15 +1,7 @@
 timestamp;is_officer;message
-2023-07-01 19:30:17.265681;True;1234
-2023-07-01 19:53:22.252116;False;1234
-2023-07-01 19:53:22.427533;False;1234
-2023-07-01 19:53:26.707065;False;1234
-2023-07-01 19:53:29.937014;False;1234
-2023-07-01 19:56:52.554799;False;1234
-2023-07-01 19:56:59.246637;False;123445
-2023-07-01 19:57:00.116543;False;123445
-2023-07-01 19:57:02.249973;False;123445
-2023-07-01 19:57:04.164687;False;123445
-2023-07-01 19:58:10.897181;False;frrf
-2023-07-01 19:58:34.813473;False;frrf
-2023-07-01 19:58:37.929129;False;frrf
-2023-07-01 19:58:39.120862;False;frrf
+2023-07-01 19:30:17.265681;TRUE;How can I assist you today? Please feel free to share your concerns.
+2023-07-01 19:53:22.252116;FALSE;I'd like to report an incident of workplace discrimination that I've been experiencing.
+2023-07-01 19:53:22.427533;TRUE;I'm sorry to hear that you're going through such an ordeal. Could you please provide some details about the discrimination you have faced?
+2023-07-01 19:53:26.707065;FALSE;I work at Company X, and I've noticed a pattern of unfair treatment based on my gender. I've been passed over for promotions multiple times, despite having the qualifications and experience. Moreover, some of my male colleagues receive higher salaries for the same job position.
+2023-07-01 19:53:29.937014;TRUE;Rest assured, your identity will remain confidential throughout the process. Our primary goal is to address the issue and ensure your rights are protected. I encourage you to consider documenting any instances of discrimination or conversations that support your claims.
+2023-07-01 19:56:52.554799;TRUE;Excellent, documenting your experiences will be helpful. The next step is for us to gather more information and conduct an investigation. I'll need you to provide some additional details, such as the names of the individuals involved, any witnesses, and any supporting evidence you may have.
