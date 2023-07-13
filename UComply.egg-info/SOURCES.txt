@@ -1,3 +1,4 @@
+README.md
 pyproject.toml
 UComply.egg-info/PKG-INFO
 UComply.egg-info/SOURCES.txt
@@ -5,8 +6,9 @@ UComply.egg-info/dependency_links.txt
 UComply.egg-info/top_level.txt
 esg_navigator/generate_keys.py
 esg_navigator/backend/helper.py
-esg_navigator/frontend/app.py
-esg_navigator/frontend/pages/case_status.py
-esg_navigator/frontend/pages/complaint_ui.py
-esg_navigator/frontend/pages/dashboard.py
-esg_navigator/frontend/pages/landing_page.py
+esg_navigator/frontend/managing_view/Dashboard.py
+esg_navigator/frontend/managing_view/pages/Case_Overview.py
+esg_navigator/frontend/managing_view/pages/Generate_Report.py
+esg_navigator/frontend/user_view/File_a_Report.py
+esg_navigator/frontend/user_view/pages/Info_Section.py
+esg_navigator/frontend/user_view/pages/Report_Status.py

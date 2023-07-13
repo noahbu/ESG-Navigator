@@ -133,16 +133,16 @@ def on_input_change(id, is_officer):
         None
     """
 
-            user_input = st.session_state.user_input
-            st.write(f"User input: {user_input}")
-            data = {
-                    "timestamp": datetime.datetime.now(),
-                    "is_officer": is_officer,
-                    "message": user_input
-                }
-            st.session_state.chat_history.append(data)
-            #message(data["message"], is_user = data["is_officer"]) 
-            chat_to_csv(str(id), st.session_state.chat_history)
+    user_input = st.session_state.user_input
+    st.write(f"User input: {user_input}")
+    data = {
+            "timestamp": datetime.datetime.now(),
+            "is_officer": is_officer,
+            "message": user_input
+        }
+    st.session_state.chat_history.append(data)
+    #message(data["message"], is_user = data["is_officer"]) 
+    chat_to_csv(str(id), st.session_state.chat_history)
 
 
 def chat_to_csv(id,chat_history):
