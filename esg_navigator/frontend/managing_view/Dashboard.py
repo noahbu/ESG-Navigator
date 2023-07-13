@@ -7,7 +7,7 @@ import os
 from streamlit_option_menu import option_menu
 import yaml
 from yaml.loader import SafeLoader 
-from esg_navigator.backend.helper import app_init,load_css, load_complaints_db
+from esg_navigator.backend.helper import app_init,load_css, load_complaints_db, load_manager_data
 import datetime
 import plost
 from PIL import Image
@@ -18,6 +18,8 @@ st.set_page_config(
     page_icon="👋",
     layout="centered"
 )
+
+#Only for effective dev: 
 
 image = Image.open('../../design/logo/ucomply_Logo.png')
 st.image(image)
@@ -34,23 +36,27 @@ if st.session_state["authentication_status"]:
     #Display login button
     st.session_state['authenticator'].logout("Logout", "sidebar")
 
+    #Read maanager_database:
+    load_manager_data()
+    db = st.session_state['manager_db']
+
+
     #cCustomize sidebar
     with st.sidebar:
         
         st.title("Ucomply - Your Social Copilot")
         st.write(f"Welcome {st.session_state['username']}!")
     
+        # st.sidebar.subheader('TBD inserting plot by region')
+        # time_hist_color = st.sidebar.selectbox('Color by', ('temp_min', 'temp_max')) 
 
-        st.sidebar.subheader('TBD inserting plot by region')
-        time_hist_color = st.sidebar.selectbox('Color by', ('temp_min', 'temp_max')) 
+        # st.sidebar.subheader('Donut chart parameter')
+        # donut_theta = st.sidebar.selectbox('Select quarter', ('q2', 'q3'))
 
-        st.sidebar.subheader('Donut chart parameter')
-        donut_theta = st.sidebar.selectbox('Select quarter', ('q2', 'q3'))
+        # st.sidebar.subheader('Line chart parameters')
 
-        st.sidebar.subheader('Line chart parameters')
-
-        plot_data = st.sidebar.multiselect('Select data', ['temp_min', 'temp_max'], ['temp_min', 'temp_max'])
-        plot_height = st.sidebar.slider('Specify plot height', 200, 500, 250)
+        # plot_data = st.sidebar.multiselect('Select data', ['temp_min', 'temp_max'], ['temp_min', 'temp_max'])
+        # plot_height = st.sidebar.slider('Specify plot height', 200, 500, 250)
 
         st.sidebar.markdown('''
         ---
@@ -66,40 +72,54 @@ if st.session_state["authentication_status"]:
 
     #Dashboard Build: ROW 2
     #To be altered to display the correct data
-    seattle_weather = pd.read_csv('https://raw.githubusercontent.com/tvst/plost/master/data/seattle-weather.csv', parse_dates=['date'])
-    cases = pd.DataFrame(dict(
-        company=['Sexual Harrasment', 'Discrimination', 'Fraud'],
-        q2 = [1, 2, 3],
-        q3 = [1, 2, 1],
-        ))
+    df_status = db.groupby('Status').size().reset_index(name='Occurrences')
+    
+    encoding = {
+        "field": "Status", 
+        "type": "nominal",
+        "scale": {
+            "domain": ["Closed", "Pending", "New"],
+            "range": ["#155D59", "#0C6D69", "#FFCB43"]
+        }}
+    
 
-
-    c1, c2 = st.columns((7,3))
+    c1, c2 = st.columns((5,5), gap = "large")
     with c1:
-        st.markdown('### Plot by region')
-        plost.time_hist(
-        data=seattle_weather,
-        date='date',
-        x_unit='week',
-        y_unit='day',
-        color=time_hist_color,
-        aggregate='median',
-        legend=None,
-        height=345,
-        use_container_width=True)
+        st.markdown('### Cases by Location')
+        df_region = db.groupby('Region').size().reset_index(name='Occurrences')
+        plost.bar_chart(
+        data=df_region,
+        bar = 'Region',
+        value='Occurrences',
+        color = "#155D59",
+        use_container_width=True,
+        height = 350,
+        direction='horizontal')
+
+
+          
     with c2:
-        st.markdown('### Reports by type')
+        st.markdown('### Cases by Status')
         plost.donut_chart(
-            data=cases,
-            theta=donut_theta,
-            color='company',
+            data=df_status,
+            theta = "Occurrences",
+            color = encoding,
+            height = 350,
+
             legend='bottom', 
             use_container_width=True)
 
     # Row C
-    st.markdown('### Insert Bar Chart')
-    st.line_chart(seattle_weather, x = 'date', y = plot_data, height = plot_height)
-    
+    #Create new db for bar chart where we do groupby Category and sum up its Occurrences: 
+    df_bar = db.groupby('Category').size().reset_index(name='Occurrences')
+
+    st.markdown('### Cases by classification')
+    plost.bar_chart(
+        data=df_bar,
+        bar = 'Category',
+        value='Occurrences',
+        color = "#155D59",
+        use_container_width=True)
 
     
 elif st.session_state["authentication_status"] is False:

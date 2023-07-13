@@ -6,6 +6,8 @@ from yaml.loader import SafeLoader
 import pandas as pd
 import streamlit_authenticator as stauth
 import datetime
+import base64
+
 
 
 def add_logo():
@@ -77,7 +79,8 @@ def load_complaints_db():
     """Loads the complaints database"""
 
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    file_path = os.path.join(parent_directory, 'data', 'complaints_db.csv')
+    file_path = os.path.join(parent_directory,"esg_navigator/data", "complaints_db.csv")
+
     st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
 
 @st.cache_data
@@ -87,16 +90,17 @@ def load_manager_data():
     """Loads the manager database"""
 
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    file_path = os.path.join(parent_directory,"esg_navigator/data", "manager_db.csv")
+    file_path = os.path.join(parent_directory,"esg_navigator/data", "complaints_db.csv")
 
     #Read database from csv
-    db = pd.read_csv(file_path,sep= ";")
+    db = pd.read_csv(file_path,sep= ";", index_col=False)
     #Filter by assigned responsible
     sliced_db = db[db['assigned_responsible'] == st.session_state['name']]
 
     if 'manager_db' not in st.session_state:
         st.session_state['manager_db'] = sliced_db
     else:
+        st.session_state['manager_db'] = sliced_db
 
         return
 
@@ -132,9 +136,15 @@ def on_input_change(id, is_officer):
     Returns:
         None
     """
+    load_complaints_db()
+    if not is_officer:
+        st.session_state['complaints_db'].loc[st.session_state['complaints_db']['ID'] == id, 'new_message'] = True
+    else:
+        st.session_state['complaints_db'].loc[st.session_state['complaints_db']['ID'] == id, 'new_message'] = False
+
+    write_to_complaints_db()
 
     user_input = st.session_state.user_input
-    st.write(f"User input: {user_input}")
     data = {
             "timestamp": datetime.datetime.now(),
             "is_officer": is_officer,
@@ -143,6 +153,7 @@ def on_input_change(id, is_officer):
     st.session_state.chat_history.append(data)
     #message(data["message"], is_user = data["is_officer"]) 
     chat_to_csv(str(id), st.session_state.chat_history)
+
 
 
 def chat_to_csv(id,chat_history):
@@ -167,6 +178,37 @@ def chat_to_csv(id,chat_history):
     # Write the DataFrame to a CSV file (this will create a new file)
     df.to_csv(file_path,sep= ";", index=False)
 
+
+def write_to_complaints_db():
+    """
+    
+    """
+    parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    file_path = os.path.join(parent_directory,"esg_navigator/data/complaints_db.csv")
+    print(file_path)
+    df = st.session_state['complaints_db']
+
+    if os.path.isfile(file_path):
+        os.remove(file_path)
+
+    df.to_csv(file_path,sep= ";", index=False)
+
+
+
+
+def displayPDF(file):
+    # Opening file from file path
+    if os.path.isfile(file):
+        with open(file, "rb") as f:
+            base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+
+        # Embedding PDF in HTML
+        pdf_display = F'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
+        st.write("Documents loaded successfully")
+        # Displaying File
+        st.markdown(pdf_display, unsafe_allow_html=True)
+    else:
+        st.write("No documents available yet!")
 
 
 

@@ -45,7 +45,7 @@ if st.session_state["authentication_status"]:
     complainee = st.empty()
 
     #Drop-down for complaint handling
-    case = complainee.selectbox("Select a case", st.session_state['manager_db']['name'].unique())
+    case = complainee.selectbox("Select a case", st.session_state['manager_db']['case-name'].unique())
     st.write(case)
 
     st.divider()
@@ -53,7 +53,7 @@ if st.session_state["authentication_status"]:
     #Chat functionality
 
     st.header(f"Complainee Interaction")
-    case_id = db.loc[db['name'] == case, 'ID'].values[0]
+    case_id = db.loc[db['case-name'] == case, 'ID'].values[0]
 
     #Load chat_history forthe case in question
     load_chat_history(case_id)    
@@ -71,6 +71,8 @@ if st.session_state["authentication_status"]:
         st.session_state.user_input = st.text_input("Generate your Response:")
         if st.button("Submit message"):
             on_input_change(case_id, is_officer = True)
+            st.experimental_rerun()
+
 
 
           # align's the message to the righ
