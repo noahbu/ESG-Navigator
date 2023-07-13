@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import streamlit_authenticator as stauth
+import datetime
+import secrets
+
 
 
 if st.session_state["authentication_status"]:
@@ -14,38 +17,58 @@ if st.session_state["authentication_status"]:
 
         st.title('ESG Manager View')
 
-        st.write(f"Welcome {st.session_state['username']}!")
-        st.write(f"Logged in as: {st.session_state['name']}!")
-        st.session_state["authenticator"].logout("Logout", "sidebar")
-
-    # Create a text input field
-    user_input = st.text_input("please enter here")
-
-    # Display the input value
-    st.write("You entered:", user_input)
-
-
-    # Create a question with a dropdown menu
-    selected_option = st.selectbox("Select an option", ["Sexual Harrassment", "Misconduct", "Discrimination"])
-
-    # Display the selected option
-    st.write("You selected:", selected_option)
-
-
-    # Create an upload field for PDF files
-    uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
-
-    # Check if a file was uploaded
-    if uploaded_file is not None:
-    # Process the uploaded file
-    # For example, you can save it or read its contents
-        st.write("File uploaded:", uploaded_file.name)
-        pdf_contents = uploaded_file.read()
-        st.write("PDF contents:", pdf_contents)
 
 elif st.session_state["authentication_status"] is False:
     st.error('Username/password is incorrect')
 
 elif st.session_state["authentication_status"] is None:
     st.warning('Please enter your username and password')
+
+
+
+st.title("Create a Report")
+st.write("Please use the filter to create a customizeable report. Once everything is selected, please press generate Report")
+
+st.header("Filter")
+
+with st.form("My Feedback", clear_on_submit=True): # clear_on_submit deletes every field, once the submit button is pressed
+
+    st.session_state['report_id'] =  secrets.token_hex(8)  # 
+
+    categories = st.radio("Which Categories shall be included in the Report?",
+        ('All',
+         'Sexual Harrasment',
+        'Discrimination',
+        'Money Laundering',
+        'Theft/Fraud',
+        'ESG-Violation',
+        'Conflict of interest'
+        ))
+    
+    categories = st.radio("Which regions shall be included?",
+        ('All', 
+        'Germany',
+        'France',
+        'Slovenia'
+        ))
+    
+    st.write("Select Timeframe:")
+
+    today = datetime.date.today()
+    tomorrow = today + datetime.timedelta(days=1)
+    start_date = st.date_input('Start date', today)
+    end_date = st.date_input('End date', tomorrow)
+    if start_date < end_date:
+        st.success('Start date: `%s`\n\nEnd date:`%s`' % (start_date, end_date))
+    else:
+        st.error('Error: End date must fall after start date.')
+        
+
+    submitted = st.form_submit_button("Generate Report")
+
+if submitted:
+    st.markdown("##### A report with the following name has been created: (Date + ID)")
+    st.code("R-" + str(start_date) + "-" + str(end_date) + st.session_state.report_id)
+    st.markdown("##### The Report is safed at the specified location:")
+    st.code("user/noah/documents/ucomply/reports")
 
