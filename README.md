@@ -34,8 +34,8 @@ streamlit run File_a_report.py
 
 Here's an image of the Dashboard view:  
   
-![Dashboard](design/Dashboard.png)
+![Dashboard](esg_navigator/design/Dashboard.png)
   
  Here is an image of the File a Complaint Overview
  
-![Complaint filing](design/File_a_complaint.png.png)
+![Complaint filing](esg_navigator/design/File_a_complaint.png.png)
