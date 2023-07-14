@@ -66,6 +66,10 @@ def show_submission_details(submission_id, selected_anonymity):
     st.write("Status:", submission['Status'].values[0])
 
 
+st.sidebar.markdown('''
+        ---
+        Created with ❤️ by UComply.
+        ''')
 
 
 st.title('Filing a Complaint')
