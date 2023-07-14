@@ -1,7 +1,7 @@
 # 👋 U-Comply software
 
   
-![UComply-Logo](esg_vaigator/design/logo/ucomply_Logo.png)
+![UComply-Logo](esg_navigator/design/logo/ucomply_Logo.png)
 
 ## Our goal
 
