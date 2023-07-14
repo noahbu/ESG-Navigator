@@ -8,7 +8,7 @@ streamlit==1.24.1
 streamlit_authenticator==0.2.2
 streamlit_chat==0.1.1
 streamlit_option_menu==0.3.6
--e git+https://github.com/noahbu/ESG-Navigator.git#egg=esg_navigator&subdirectory=backend
+-e git+https://github.com/noahbu/ESG-Navigator/blob/main/esg_navigator/backend/helper.py
 
 
 
