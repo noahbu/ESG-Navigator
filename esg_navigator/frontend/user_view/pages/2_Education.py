@@ -3,7 +3,7 @@ from esg_navigator.backend.helper import add_logo
 
 
 st.set_page_config(
-    page_title="Info-Section",
+    page_title="Education and FAQs",
     page_icon="👋",
     layout="wide"
 )
@@ -24,6 +24,20 @@ def load_assets():
 
 st.title('Education and FAQs')
 
+
+st.markdown(""" 
+
+### Overview
+            """)
+
+
+width = max(80, 0.01)
+side = max((100 - width) / 2, 0.01)
+
+_, container, _ = st.columns([side, width, side])
+container.video(data="https://www.youtube.com/watch?v=raNpbPBNyhI")
+
+            
 
 st.markdown(""" 
 
