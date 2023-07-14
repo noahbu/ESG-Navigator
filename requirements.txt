@@ -25,7 +25,7 @@ gitpython=3.1.31=pypi_0
 gmaps=0.9.0=pypi_0
 googlemaps=4.10.0=pypi_0
 idna=3.4=pypi_0
-#importlib-metadata=6.6.0=pypi_0
+importlib-metadata=6.6.0=pypi_0#
 ipykernel=6.23.2=pypi_0
 ipython=8.14.0=pypi_0
 ipywidgets=8.0.6=pypi_0
@@ -74,8 +74,8 @@ pytz=2023.3=pypi_0
 pytz-deprecation-shim=0.1.0.post0=pypi_0
 pyyaml=6.0=pypi_0
 pyzmq=25.1.0=pypi_0
-#random-username=1.0.2=pypi_0
-#readline=8.2=h92ec313_1
+random-username=1.0.2=pypi_0#
+readline=8.2=h92ec313_1#
 requests=2.31.0=pypi_0
 rich=13.4.2=pypi_0
 setuptools=67.7.2=pyhd8ed1ab_0
@@ -97,7 +97,7 @@ typing-extensions=4.6.3=pypi_0
 tzdata=2023.3=pypi_0
 tzlocal=4.3=pypi_0
 ucomply=0.0.1=pypi_0
-#urllib3=2.0.3=pypi_0
+urllib3=2.0.3=pypi_0 #
 validators=0.20.0=pypi_0
 wcwidth=0.2.6=pypi_0
 wheel=0.40.0=pyhd8ed1ab_0
