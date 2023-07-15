@@ -18,6 +18,11 @@ st.set_page_config(
 add_logo() 
 st.title("Report Status")
 
+st.sidebar.markdown('''
+        ---
+        Created with ❤️ by UComply.
+        ''')
+
 
 if "valid_case" not in st.session_state:
      st.session_state['valid_case'] = False

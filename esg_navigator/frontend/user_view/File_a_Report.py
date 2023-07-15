@@ -321,18 +321,3 @@ if feedback_complaint == 'Complaint':
             st.image(os.path.join(parent_directory, 'backend', 'trustworthy_hr_manager.jpg'), use_column_width=True)
             st.header("Micheal will handle you case")
             st.write("Michael Goodville is a proffesional conflict solver and will take the utmost care and sensitivity in handling your case")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

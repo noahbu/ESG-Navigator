@@ -7,7 +7,13 @@ st.set_page_config(
     page_icon="👋",
     layout="wide"
 )
+#Add logo to the sidebar
 add_logo()  
+#Add signature to the sidebar
+st.sidebar.markdown('''
+        ---
+        Created with ❤️ by UComply.
+        ''')
 
 
 def load_assets():
