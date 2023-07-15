@@ -19,7 +19,7 @@ import secrets
 import pandas as pd
 
 from datetime import datetime
-from app.ucomply.esg_navigator.backend.helper import add_logo
+from ucomply.esg_navigator.backend.helper import add_logo
 import os
 #from PyPDF2 import PdfFileReader, PdfWriter
 import PyPDF2
