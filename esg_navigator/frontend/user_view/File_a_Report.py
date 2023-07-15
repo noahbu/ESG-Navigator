@@ -1,9 +1,8 @@
 
 import sys
-import pathlib as path
 import os
+import streamlit as st
 
-import os
 
 dir = os.path.abspath(__file__)
 st.write(f"Current directory: {dir}")
@@ -14,7 +13,6 @@ st.write(f"Parent parent parent directory: {os.path.dirname(os.path.dirname(os.p
 #sys.append.path(dir.parent.parent)
 
 
-import streamlit as st
 import numpy as np
 import secrets
 import pandas as pd
@@ -28,11 +26,11 @@ import PyPDF2
 
 
 # Get the root directory of the project (the location of the script)
-st.set_page_config(
-    page_title="File your report",
-    page_icon="👋",
-    layout="wide"
-)
+# st.set_page_config(
+#     page_title="File your report",
+#     page_icon="👋",
+#     layout="wide"
+# )
 add_logo()
 
 #set parent directory
