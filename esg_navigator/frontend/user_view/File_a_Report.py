@@ -5,6 +5,7 @@ import streamlit as st
 
 
 dir = os.path.abspath(__file__)
+print(dir)
 st.write(f"Current directory: {dir}")
 st.write(f"Parent directory: {os.path.dirname(dir)}")
 st.write(f"Parent parent directory: {os.path.dirname(os.path.dirname(dir))}")
