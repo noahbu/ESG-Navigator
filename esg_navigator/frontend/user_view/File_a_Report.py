@@ -2,37 +2,20 @@
 import sys
 import os
 import streamlit as st
-
-
-dir = os.path.abspath(__file__)
-print(dir)
-st.write(f"Current directory: {dir}")
-st.write(f"Parent directory: {os.path.dirname(dir)}")
-st.write(f"Parent parent directory: {os.path.dirname(os.path.dirname(dir))}")
-st.write(f"Parent parent parent directory: {os.path.dirname(os.path.dirname(os.path.dirname(dir)))}")
-
-#sys.append.path(dir.parent.parent)
-
-
 import numpy as np
 import secrets
 import pandas as pd
-
 from datetime import datetime
 from ucomply.esg_navigator.backend.helper import add_logo
-
 import os
-#from PyPDF2 import PdfFileReader, PdfWriter
 import PyPDF2
 
 
-
-# Get the root directory of the project (the location of the script)
-# st.set_page_config(
-#     page_title="File your report",
-#     page_icon="👋",
-#     layout="wide"
-# )
+st.set_page_config(
+    page_title="File your report",
+    page_icon="👋",
+    layout="wide"
+)
 add_logo()
 
 #set parent directory
