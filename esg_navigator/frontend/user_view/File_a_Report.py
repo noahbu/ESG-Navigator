@@ -1,6 +1,6 @@
 
 import sys
-import path
+import pathlib as path
 
 dir = path.Path(__file__).abspath()
 st.write(f"Current directory: {dir}")
