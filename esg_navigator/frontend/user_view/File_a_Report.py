@@ -19,7 +19,9 @@ import secrets
 import pandas as pd
 
 from datetime import datetime
-from esg_navigator.backend.helper import add_logo
+#from esg_navigator.backend.helper import add_logo
+from helper import add_logo
+
 import os
 #from PyPDF2 import PdfFileReader, PdfWriter
 import PyPDF2
