@@ -1,12 +1,25 @@
+
+import path
+import sys
+dir = path.Path(__file__).abspath()
+st.write(f"Current directory: {dir}")
+st.write(f"Parent directory: {dir.parent}")
+st.write(f"Parent parent directory: {dir.parent.parent}")
+st.write(f"Parent parent parent directory: {dir.parent.parent.parent}")
+#sys.append.path(dir.parent.parent)
+
+
 import streamlit as st
 import numpy as np
 import secrets
 import pandas as pd
+
 from datetime import datetime
 from esg_navigator.backend.helper import add_logo
 import os
 #from PyPDF2 import PdfFileReader, PdfWriter
 import PyPDF2
+
 
 
 # Get the root directory of the project (the location of the script)
