@@ -1,6 +1,7 @@
 
-import path
 import sys
+import os
+
 dir = path.Path(__file__).abspath()
 st.write(f"Current directory: {dir}")
 st.write(f"Parent directory: {dir.parent}")
