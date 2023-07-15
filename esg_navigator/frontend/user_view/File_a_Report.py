@@ -1,12 +1,16 @@
 
 import sys
 import pathlib as path
+import os
 
-dir = path.Path(__file__).abspath()
+import os
+
+dir = os.path.abspath(__file__)
 st.write(f"Current directory: {dir}")
-st.write(f"Parent directory: {dir.parent}")
-st.write(f"Parent parent directory: {dir.parent.parent}")
-st.write(f"Parent parent parent directory: {dir.parent.parent.parent}")
+st.write(f"Parent directory: {os.path.dirname(dir)}")
+st.write(f"Parent parent directory: {os.path.dirname(os.path.dirname(dir))}")
+st.write(f"Parent parent parent directory: {os.path.dirname(os.path.dirname(os.path.dirname(dir)))}")
+
 #sys.append.path(dir.parent.parent)
 
 
