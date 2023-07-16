@@ -203,7 +203,6 @@ if feedback_complaint == 'Feedback':
             
         with col2: 
             filepath = os.path.join(parent_directory, 'esg_navigator/backend/trustworthy_hr_manager.jpg')
-            st.write(filepath)
             st.image(filepath, use_column_width=True)
             st.header("Micheal will forward your feedback")
             st.write("Michael Goodville is a proffesional conflict solver and is always lookign forward to give positive Feedback")
@@ -311,7 +310,6 @@ if feedback_complaint == 'Complaint':
             
         with col2: 
             filepath = os.path.join(parent_directory, 'esg_navigator/backend/trustworthy_hr_manager.jpg')
-            st.write(filepath)
             st.image(filepath, use_column_width=True)
             st.header("Michael will handle you case")
             st.write("Michael Goodville is a proffesional conflict solver and will take the utmost care and sensitivity in handling your case")
