@@ -1,5 +1,5 @@
 import streamlit as st
-from esg_navigator.backend.helper import add_logo
+from backend.helper import add_logo
 
 
 st.set_page_config(
