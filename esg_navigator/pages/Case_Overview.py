@@ -58,7 +58,6 @@ if st.session_state["authentication_status"]:
     row = db[db['case-name'] == case]
     timestamp = row['Timestamp'].iloc[0]
     case_id = row['ID'].iloc[0]
-    st.write(case_id)
     urgency = row['Urgency'].iloc[0]
     anonymity = row['Anonymity'].iloc[0]
     email = row['Email'].iloc[0]
@@ -101,8 +100,10 @@ if st.session_state["authentication_status"]:
     st.write("")
 
     #Load chat_history forthe case in question
-    
-    load_chat_history(case_id)    
+    if 'chat_history' not in st.session_state:
+        st.session_state['chat_history'] = []
+
+    st.session_state['chat_history'] = load_chat_history(case_id)    
     #Display chat history
     chat_placeholder = st.empty()
     #Load chat history

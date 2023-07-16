@@ -131,7 +131,7 @@ def load_chat_history(id):
     else:
         st.session_state['chat_history'] = []
 
-    return 
+    return st.session_state['chat_history']
 
 def on_input_change(id, is_officer):
     """Adds the user input to the chat history
