@@ -55,7 +55,7 @@ def app_init():
 
 
     # Load the login module
-    with open('config.yaml') as file:
+    with open('../config.yaml') as file:
         config = yaml.load(file, Loader=SafeLoader)
 
     authenticator = stauth.Authenticate(
