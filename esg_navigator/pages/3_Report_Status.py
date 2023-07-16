@@ -5,7 +5,7 @@ import numpy as np
 import secrets
 import pandas as pd
 import os
-from esg_navigator.backend.helper import chat_to_csv,load_chat_history, add_logo, on_input_change, load_complaints_db, write_to_complaints_db, displayPDF
+from backend.helper import chat_to_csv,load_chat_history, add_logo, on_input_change, load_complaints_db, write_to_complaints_db, displayPDF
 
 
 
