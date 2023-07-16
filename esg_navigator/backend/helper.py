@@ -57,7 +57,7 @@ def app_init():
     # Load the login module
     parent_directory = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
     file_path = os.path.join(parent_directory, 'config.yaml')
-    st.write(file_path)
+    #st.write(file_path)
 
     with open(file_path) as file:
         config = yaml.load(file, Loader=SafeLoader)
