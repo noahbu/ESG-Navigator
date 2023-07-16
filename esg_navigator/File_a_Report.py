@@ -31,7 +31,7 @@ def save_feedback(pdf_contents):
     st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
     #SAVE_PDF
     if pdf_contents is not None:
-        pdf_path = os.path.join(parent_directory, 'data','pdfs', str(id)+'.pdf')
+        pdf_path = os.path.join(parent_directory, 'esg_navigator/data','pdfs', str(id)+'.pdf')
         with open(pdf_path, 'wb') as out:
             out.write(pdf_contents)
     else:
@@ -61,7 +61,7 @@ def save_feedback(pdf_contents):
 def save_complaint(pdf_contents):
     print("Saving form...")
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    file_path = os.path.join(parent_directory, 'data', 'complaints_db.csv')
+    file_path = os.path.join(parent_directory, '/esg_navigator/data', 'complaints_db.csv')
     st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
     #SAVE_PDF
     if pdf_contents is not None:
