@@ -84,17 +84,20 @@ def load_complaints_db():
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     file_path = os.path.join(parent_directory,"esg_navigator/data", "complaints_db.csv")
 
-    st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
+    if 'complaints_db' not in st.session_state:
+        st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
+    else:
+        st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
+
+   
 
 @st.cache_data
 def load_manager_data():
 
-    #TODO: Merge both databases
     """Loads the manager database"""
 
     parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     file_path = os.path.join(parent_directory,"esg_navigator/data", "complaints_db.csv")
-
     #Read database from csv
     db = pd.read_csv(file_path,sep= ";", index_col=False)
     #Filter by assigned responsible
@@ -105,7 +108,6 @@ def load_manager_data():
     else:
         st.session_state['manager_db'] = sliced_db
 
-        return
 
 
 #Chat helper functions 
