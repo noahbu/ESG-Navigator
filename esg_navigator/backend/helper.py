@@ -109,6 +109,7 @@ def load_manager_data():
     else:
         st.session_state['manager_db'] = sliced_db
 
+    return st.session_state['manager_db']
 
 
 #Chat helper functions 

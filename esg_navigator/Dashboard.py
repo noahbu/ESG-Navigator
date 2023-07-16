@@ -38,10 +38,10 @@ if st.session_state["authentication_status"]:
     #Read filtered complaints_db according to your login:
     if 'manager_db' not in st.session_state:
         st.session_state['manager_db'] = None
-    load_manager_data()
+
+    st.session_state['manager_db'] = load_manager_data()
     db = st.session_state['manager_db']
     st.write(db)
-
 
     #Customize sidebar
     with st.sidebar:
