@@ -24,7 +24,7 @@ parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 #save feedback
 def save_feedback(pdf_contents):
     print("Saving form...")
-    parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    parent_directory = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
     st.write(parent_directory)
     file_path = os.path.join(parent_directory, 'data', 'complaints_db.csv')
     st.write(file_path)
