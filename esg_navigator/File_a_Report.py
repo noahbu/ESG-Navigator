@@ -6,7 +6,7 @@ import numpy as np
 import secrets
 import pandas as pd
 from datetime import datetime
-from esg_navigator.backend.helper import add_logo
+from backend.helper import add_logo
 import os
 import PyPDF2
 
