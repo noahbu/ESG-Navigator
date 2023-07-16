@@ -10,11 +10,11 @@ Because your Compliance is what matters to us!
 
 ##See our product in action: 
 
-###User-view: 
+### User-view: 
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ucomply.streamlit.app/)
 
-###Managing-view: 
+### Managing-view: 
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ucomply-manager.streamlit.app/)
 
