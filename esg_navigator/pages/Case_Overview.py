@@ -49,30 +49,27 @@ if st.session_state["authentication_status"]:
         st.write(new_message_db_transposed)
 
     st.write("")
-
-     # Get the row where 'case-name' is 'case'
-    def get_new_values():
-        row = db[db['case-name'] == case]
-        timestamp = row['Timestamp'].iloc[0]
-        case_id = row['ID'].iloc[0]
-        urgency = row['Urgency'].iloc[0]
-        anonymity = row['Anonymity'].iloc[0]
-        email = row['Email'].iloc[0]
-        category = row['Category'].iloc[0]
-        location = row['Location'].iloc[0]
-        issue = row['Issue'].iloc[0]
-        evidence = row['Evidence'].iloc[0]
-        case_name = row['case-name'].iloc[0]
-        status = row['Status'].iloc[0]
-        region = row['Region'].iloc[0]
-        return timestamp, case_id, urgency, anonymity, email, category, location, issue, evidence, case_name, status, region
-
     #Display the status of the case
     complainee = st.empty()
      #Drop-down for complaint handling
-    case = complainee.selectbox("Select a case to view the status of your report", st.session_state['manager_db']['case-name'].unique(),on_change= get_new_values())
-   
-  
+    case = complainee.selectbox("Select a case to view the status of your report", st.session_state['manager_db']['case-name'].unique())
+
+   # Get the row where 'case-name' is 'case'
+    row = db[db['case-name'] == case]
+    timestamp = row['Timestamp'].iloc[0]
+    case_id = row['ID'].iloc[0]
+    st.write(case_id)
+    urgency = row['Urgency'].iloc[0]
+    anonymity = row['Anonymity'].iloc[0]
+    email = row['Email'].iloc[0]
+    category = row['Category'].iloc[0]
+    location = row['Location'].iloc[0]
+    issue = row['Issue'].iloc[0]
+    evidence = row['Evidence'].iloc[0]
+    case_name = row['case-name'].iloc[0]
+    status = row['Status'].iloc[0]
+    region = row['Region'].iloc[0]
+
 
     # Store each column's value in a separate variable
 
@@ -104,6 +101,7 @@ if st.session_state["authentication_status"]:
     st.write("")
 
     #Load chat_history forthe case in question
+    
     load_chat_history(case_id)    
     #Display chat history
     chat_placeholder = st.empty()
