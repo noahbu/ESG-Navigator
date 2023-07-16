@@ -49,12 +49,8 @@ if st.session_state["authentication_status"]:
         st.write(new_message_db_transposed)
 
     st.write("")
-    #Display the status of the case
-    complainee = st.empty()
-     #Drop-down for complaint handling
-    case = complainee.selectbox("Select a case to view the status of your report", st.session_state['manager_db']['case-name'].unique(),on_change= get_new_values())
-   
-   # Get the row where 'case-name' is 'case'
+
+     # Get the row where 'case-name' is 'case'
     def get_new_values():
         row = db[db['case-name'] == case]
         timestamp = row['Timestamp'].iloc[0]
@@ -71,6 +67,12 @@ if st.session_state["authentication_status"]:
         region = row['Region'].iloc[0]
         return timestamp, case_id, urgency, anonymity, email, category, location, issue, evidence, case_name, status, region
 
+    #Display the status of the case
+    complainee = st.empty()
+     #Drop-down for complaint handling
+    case = complainee.selectbox("Select a case to view the status of your report", st.session_state['manager_db']['case-name'].unique(),on_change= get_new_values())
+   
+  
 
     # Store each column's value in a separate variable
 
