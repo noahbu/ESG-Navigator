@@ -16,9 +16,6 @@ add_logo()
 if "user_input" not in st.session_state:
         st.session_state['user_input'] = ""
 
-
-
-
 if st.session_state["authentication_status"]:
     #Sidebar customization
     with st.sidebar:
@@ -55,22 +52,24 @@ if st.session_state["authentication_status"]:
     #Display the status of the case
     complainee = st.empty()
      #Drop-down for complaint handling
-    case = complainee.selectbox("Select a case to view the status of your report", st.session_state['manager_db']['case-name'].unique())
+    case = complainee.selectbox("Select a case to view the status of your report", st.session_state['manager_db']['case-name'].unique(),on_change= get_new_values())
    
    # Get the row where 'case-name' is 'case'
-    row = db[db['case-name'] == case]
-    timestamp = row['Timestamp'].iloc[0]
-    case_id = row['ID'].iloc[0]
-    urgency = row['Urgency'].iloc[0]
-    anonymity = row['Anonymity'].iloc[0]
-    email = row['Email'].iloc[0]
-    category = row['Category'].iloc[0]
-    location = row['Location'].iloc[0]
-    issue = row['Issue'].iloc[0]
-    evidence = row['Evidence'].iloc[0]
-    case_name = row['case-name'].iloc[0]
-    status = row['Status'].iloc[0]
-    region = row['Region'].iloc[0]
+    def get_new_values():
+        row = db[db['case-name'] == case]
+        timestamp = row['Timestamp'].iloc[0]
+        case_id = row['ID'].iloc[0]
+        urgency = row['Urgency'].iloc[0]
+        anonymity = row['Anonymity'].iloc[0]
+        email = row['Email'].iloc[0]
+        category = row['Category'].iloc[0]
+        location = row['Location'].iloc[0]
+        issue = row['Issue'].iloc[0]
+        evidence = row['Evidence'].iloc[0]
+        case_name = row['case-name'].iloc[0]
+        status = row['Status'].iloc[0]
+        region = row['Region'].iloc[0]
+        return timestamp, case_id, urgency, anonymity, email, category, location, issue, evidence, case_name, status, region
 
 
     # Store each column's value in a separate variable
@@ -94,11 +93,6 @@ if st.session_state["authentication_status"]:
     st.data_editor(st.session_state['manager_db'][st.session_state['manager_db']['case-name'] == case])
 
     #Filter open complaints by region for Germany
-
-
-
-
-
 
     st.divider()
 
@@ -127,8 +121,6 @@ if st.session_state["authentication_status"]:
 
 
           # align's the message to the righ
-
-
 
 elif st.session_state["authentication_status"] is False:
     st.error('Username/password is incorrect')

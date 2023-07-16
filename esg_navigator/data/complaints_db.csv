@@ -1,7 +1,7 @@
 Timestamp;ID;Urgency;Anonymity;Email;Category;Location;Issue;Evidence;case-name;assigned_responsible;Status;new_message;Region
 2023-06-22 16:51:50.950254;696e72e21ae5b466;Look at it this week;Email;christian@bauters.gmail.com;Misconduct;France;John made an inappropriate comment about Sarah's outfit.;;Case-ID278;Admin;New;TRUE;France
 2023-06-22 16:57:36.741273;573539b919709987;Look at it this week;Anonymous;Anonymous;Sexual Harrasment;France;Witnessed Mark telling offensive jokes to coworkers.;;Case-ID279;Admin;Pending;TRUE;France
-assigned_+A1:M5responsible;8e8c6f9a871dfe56;Urgent, please handle this today ;Anonymous;Anonymous;Discrimination;France;Laura continually made unsolicited advances towards Emily.;;Case-ID280;Admin;Closed;TRUE;Slovenia
+2023-06-22 16:57:36.741273;8e8c6f9a871dfe56;Urgent, please handle this today ;Anonymous;Anonymous;Discrimination;France;Laura continually made unsolicited advances towards Emily.;;Case-ID280;Admin;Closed;TRUE;Slovenia
 2023-06-22 16:59:31.042526;1429511c82ed98cd;Look at it this week;Email;christian@bauters.gmail.com;Money Laundering;France;Michael was making unwelcome comments about Sophia's personal life.;;Case-ID281;Admin;Pending;TRUE;France
 2023-06-22 17:01:11.754018;1337add293ad6b4e;Look at it this week;Anonymous;Anonymous;Theft/Fraud;France;Tom was using derogatory language towards Jack.;;Case-ID282;Admin;Pending;FALSE;France
 2023-06-22 17:01:16.726001;cb27fe06077f7050;Look at it this week;Anonymous;Anonymous;ESG-Violation;France;Emma was verbally abusive to Oliver during a team meeting.;;Case-ID283;Admin;Pending;FALSE;France
