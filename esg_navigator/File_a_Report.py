@@ -17,6 +17,10 @@ st.set_page_config(
     layout="wide"
 )
 add_logo()
+st.sidebar.markdown('''
+        ---
+        Created with ❤️ by UComply.
+        ''')
 
 #set parent directory
 parent_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
