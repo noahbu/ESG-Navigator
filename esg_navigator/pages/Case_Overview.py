@@ -12,8 +12,6 @@ st.set_page_config(
 #Load logo to the sidebar
 add_logo()
 
-
-
 #Intialize session state variables
 if "user_input" not in st.session_state:
         st.session_state['user_input'] = ""
@@ -31,42 +29,76 @@ if st.session_state["authentication_status"]:
         ---
         Created with ❤️ by UComply.
         ''')
-
-
-
-    st.title('Manage your active cases Cases')
-
-    st.header("Overview of your active cases")
-    # This months complaints 
-    st.metric("You have new unread messages:", " 3")
-    #Filter open complaints by region for Germany
-
-
-
-    st.header("Displaying all active cases")
-
-    st.write("View your open cases")
-
-
-   
-
-    #Load the database into the session state
+        #Load the database into the session state
     load_manager_data()
     #Get the database from the session state
     db = st.session_state['manager_db']
 
-    #Display editable table
-    st.data_editor(st.session_state['manager_db'])
 
-    st.write("Select a case to view the status of your report")
+    st.title('Manage your active cases Cases')
+
+    # This months complaints 
+
+    #Retireve the amount of new_messages == True
+    new_messages = db.loc[db['new_message'] == True, 'new_message'].count()
+    new_message_db = db.loc[db['new_message'] == True,"case-name"]
+    new_message_db_transposed = new_message_db.to_frame().T
+    
+    #Case_Overview Build: 
+    col1, col2= st.columns(2)
+    with(col1):
+        st.metric("You have new unread messages for the following cases:", str(new_messages), 2)
+    with(col2):
+        st.write(new_message_db_transposed)
+
+    st.write("")
     #Display the status of the case
     complainee = st.empty()
+     #Drop-down for complaint handling
+    case = complainee.selectbox("Select a case to view the status of your report", st.session_state['manager_db']['case-name'].unique())
+   
+   # Get the row where 'case-name' is 'case'
+    row = db[db['case-name'] == case]
+    timestamp = row['Timestamp'].iloc[0]
+    case_id = row['ID'].iloc[0]
+    urgency = row['Urgency'].iloc[0]
+    anonymity = row['Anonymity'].iloc[0]
+    email = row['Email'].iloc[0]
+    category = row['Category'].iloc[0]
+    location = row['Location'].iloc[0]
+    issue = row['Issue'].iloc[0]
+    evidence = row['Evidence'].iloc[0]
+    case_name = row['case-name'].iloc[0]
+    status = row['Status'].iloc[0]
+    region = row['Region'].iloc[0]
 
-    #Drop-down for complaint handling
-    case = complainee.selectbox("Select a case", st.session_state['manager_db']['case-name'].unique())
+
+    # Store each column's value in a separate variable
+
+    col1, col2 = st.columns(2,gap = "large")
+    with(col1):
+        st.header("**User Information**")
+        if anonymity == 'Anonymous':
+            st.write("Name : Anonymous")
+        else:
+            st.write("Name : ", email)
+    with(col2):
+        st.header("**Case Information**")
+        st.write("Case Status : ", status)
+        st.write("Urgency : ", urgency)
+        st.write("Time of the Incident: ", timestamp)
+        st.write("Location : ", region)
+
+    #Display editable table
+    st.write("Edit the case information below")
+    st.data_editor(st.session_state['manager_db'][st.session_state['manager_db']['case-name'] == case])
+
+    #Filter open complaints by region for Germany
 
 
-    st.write(case)
+
+
+
 
     st.divider()
 
@@ -74,7 +106,6 @@ if st.session_state["authentication_status"]:
     st.header(f"Complainee Interaction")
     st.write("Chat with the complainee to resolve the case")
     st.write("")
-    case_id = db.loc[db['case-name'] == case, 'ID'].values[0]
 
     #Load chat_history forthe case in question
     load_chat_history(case_id)    
