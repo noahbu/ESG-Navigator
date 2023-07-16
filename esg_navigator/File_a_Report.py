@@ -26,7 +26,7 @@ def save_feedback(pdf_contents):
     print("Saving form...")
     parent_directory = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
     st.write(parent_directory)
-    file_path = os.path.join(parent_directory, 'ucomply/esg_navigator/data/complaints_db.csv')
+    file_path = os.path.join(parent_directory, 'esg_navigator/data/complaints_db.csv')
     st.write(file_path)
     st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
     #SAVE_PDF
