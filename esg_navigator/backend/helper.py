@@ -77,7 +77,6 @@ def app_init():
 
 
 @st.cache_data
-
 def load_complaints_db():
     """Loads the complaints database"""
 
@@ -102,7 +101,6 @@ def load_manager_data():
     db = pd.read_csv(file_path,sep= ";", index_col=False)
     #Filter by assigned responsible
     sliced_db = db[db['assigned_responsible'] == st.session_state['name']]
-    st.write('sliced_db', sliced_db)
 
     if 'manager_db' not in st.session_state:
         st.session_state['manager_db'] = sliced_db

@@ -41,7 +41,6 @@ if st.session_state["authentication_status"]:
 
     st.session_state['manager_db'] = load_manager_data()
     db = st.session_state['manager_db']
-    st.write(db)
 
     #Customize sidebar
     with st.sidebar:
