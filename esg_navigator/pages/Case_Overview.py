@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_chat import message
 import datetime
-from esg_navigator.backend.helper import add_logo, chat_to_csv, load_chat_history, load_manager_data, on_input_change
+from backend.helper import add_logo, chat_to_csv, load_chat_history, load_manager_data, on_input_change
 #from random_username.generate import generate_username
 
 st.set_page_config(

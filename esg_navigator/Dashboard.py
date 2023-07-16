@@ -7,7 +7,7 @@ import os
 from streamlit_option_menu import option_menu
 import yaml
 from yaml.loader import SafeLoader 
-from esg_navigator.backend.helper import app_init,load_css, load_complaints_db, load_manager_data
+from backend.helper import app_init,load_css, load_complaints_db, load_manager_data
 import datetime
 import plost
 from PIL import Image

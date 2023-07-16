@@ -4,7 +4,7 @@ import numpy as np
 import streamlit_authenticator as stauth
 import datetime
 import secrets
-from esg_navigator.backend.helper import add_logo
+from backend.helper import add_logo
  
 
 st.set_page_config(
