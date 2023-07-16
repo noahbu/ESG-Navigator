@@ -202,7 +202,9 @@ if feedback_complaint == 'Feedback':
             show_submission_details(st.session_state.process_id, selected_anonymity)
             
         with col2: 
-            st.image(os.path.join(parent_directory, 'backend', 'trustworthy_hr_manager.jpg'), use_column_width=True)
+            filepath = os.path.join(parent_directory, 'esg_navigator/backend/trustworthy_hr_manager.jpg')
+            st.write(filepath)
+            st.image(filepath, use_column_width=True)
             st.header("Micheal will forward your feedback")
             st.write("Michael Goodville is a proffesional conflict solver and is always lookign forward to give positive Feedback")
 
@@ -308,6 +310,8 @@ if feedback_complaint == 'Complaint':
             show_submission_details(st.session_state.process_id, selected_anonymity)
             
         with col2: 
-            st.image(os.path.join(parent_directory, 'esg_navigator/backend/trustworthy_hr_manager.jpg'), use_column_width=True)
-            st.header("Micheal will handle you case")
+            filepath = os.path.join(parent_directory, 'esg_navigator/backend/trustworthy_hr_manager.jpg')
+            st.write(filepath)
+            st.image(filepath, use_column_width=True)
+            st.header("Michael will handle you case")
             st.write("Michael Goodville is a proffesional conflict solver and will take the utmost care and sensitivity in handling your case")
