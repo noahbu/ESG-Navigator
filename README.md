@@ -8,9 +8,17 @@
 We automate your compliance & complaints handling needs!
 Because your Compliance is what matters to us!
 
-## Installation
+##See our product in action: 
 
-  
+###User-view: 
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ucomply.streamlit.app/)
+
+###Managing-view: 
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ucomply-manager.streamlit.app/)
+
+## Installation
 
 ### Getting started
 
