@@ -20,7 +20,7 @@ st.set_page_config(
 )
 
 #load logo section
-image = Image.open('/design/logo/ucomply_Logo.png')
+image = Image.open('/app/ucomply/esg_navigator/design/logo/ucomply_Logo.png')
 st.image(image)
 
 #Variable initialization & login functionality
