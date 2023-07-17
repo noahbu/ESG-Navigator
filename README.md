@@ -3,6 +3,10 @@
   
 ![UComply-Logo](esg_navigator/design/logo/ucomply_Logo.png)
 
+## Links to our Ucomply's Github Repo
+
+[UComply on Github](https://github.com/noahbu/ucomply)
+
 ## Our goal
 
 We automate your compliance & complaints handling needs!
