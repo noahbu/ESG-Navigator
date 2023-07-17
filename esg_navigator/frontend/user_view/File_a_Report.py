@@ -43,7 +43,7 @@ def save_feedback(pdf_contents):
                'Issue': description, 
                'Evidence': pdf_path, 
                'Status': 'Open',
-               'Manager': 'admin'}
+               'assigned_responsible': 'admin'}
     
     # Append the row        
     st.session_state.complaints_db = pd.concat([st.session_state.complaints_db, pd.DataFrame([new_row])], ignore_index=True)
@@ -62,7 +62,7 @@ def save_complaint(pdf_contents):
     st.session_state['complaints_db'] = pd.read_csv(file_path,sep= ";")
     #SAVE_PDF
     if pdf_contents is not None:
-        pdf_path = os.path.join(parent_directory, 'data','pdfs', str(id)+'.pdf')
+        pdf_path = os.path.join(parent_directory, 'data','pdfs', str(st.session_state.process_id)+'.pdf')
         with open(pdf_path, 'wb') as out:
             out.write(pdf_contents)
     else:
@@ -75,10 +75,13 @@ def save_complaint(pdf_contents):
                'Email': email, 
                'Category': choose_category,
                'Location': location,
+               'Region': location,
                'Issue': description, 
                'Evidence': pdf_path, 
                'Status': 'Open',
-               'Manager': 'admin'}
+               'assigned_responsible': 'Admin',
+               'case-name': 'Case-ID1111',
+               'new_message': False}
     
     # Append the row        
     st.session_state.complaints_db = pd.concat([st.session_state.complaints_db, pd.DataFrame([new_row])], ignore_index=True)
@@ -244,6 +247,7 @@ if feedback_complaint == 'Complaint':
         if selected_anonymity == "Anonymous":
             #st.caption(f"Process ID: {st.session_state.process_id}")
             st.write("You will be provided with a Case-ID after submission. You can use this to anonymously track status of the cases and get in contact with the case manager")
+            email = 'email was not available'
 
         if selected_anonymity == "Email":
             email = st.text_input("Enter your email")
@@ -308,3 +312,18 @@ if feedback_complaint == 'Complaint':
             st.image(os.path.join(parent_directory, 'backend', 'trustworthy_hr_manager.jpg'), use_column_width=True)
             st.header("Micheal will handle you case")
             st.write("Michael Goodville is a proffesional conflict solver and will take the utmost care and sensitivity in handling your case")
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -64,8 +64,9 @@ else:
         st.markdown('### Your submitted documents:')
         st.write("View your submitted Documents")
         if st.button("View my Documents",key = "View_button"):
-            parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
             pdf_path = os.path.join(parent_directory, 'data','pdfs', str(st.session_state['process_id'])+'.pdf')
+            st.write(pdf_path)
             displayPDF(pdf_path)
     with c3:
         st.write("")
