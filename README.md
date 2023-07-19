@@ -47,7 +47,20 @@ streamlit run File_a_report.py
 Here's an image of the Dashboard view:  
   
 ![Dashboard](esg_navigator/design/Dashboard.png)
+
   
  Here is an image of the File a Complaint Overview
  
 ![Complaint filing](esg_navigator/design/File_a_complaint.png)
+
+## Technical Details
+We built a Webapp on the [Streamlit](https://streamlit.io/) Framework. It provides a simple layout which we only had to adapt a little to our preferences. 
+Streamlit is also very good for additional adding of ML-Models/Ai integration for the future. 
+
+Our product actually consists of two Webapps: One for the user/employee filing a case and one for the manager/person to resolve and handle the case. 
+Both are connected via a database containing all the complaints and a chat database for each case. 
+
+### Folder Structure: 
+- Each webapp has a subfolder in /frontend. In it is one launch file containing the landing page as well as other pages in the /pages folder.
+- Databases and PDFs are stored in the /data folder.
+- additional setup and design files are needed in various locations. 
